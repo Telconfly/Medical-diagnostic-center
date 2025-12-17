@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація</title>
+    <link rel="stylesheet" href="Signup.css">
+</head>
+
+<body class="bg-primary">
+
+    <div class="center-container">
+        <div class="signup-card">
+
+            <form id="signup-form">
+
+                <h2 class="title">Реєстрація</h2>
+
+                <div class="form-group">
+                    <label for="name"><strong>П.І.Б.</strong></label>
+                    <input type="text" id="name" name="name" placeholder="Введіть Ім'я">
+                    <span id="name-error" class="error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email"><strong>Email</strong></label>
+                    <input type="email" id="email" name="email" placeholder="Введіть Email">
+                    <span id="email-error" class="error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password"><strong>Пароль</strong></label>
+                    <input type="password" id="password" name="password" placeholder="Введіть Пароль">
+                    <span id="password-error" class="error"></span>
+                </div>
+
+                <button type="submit" class="btn-submit">Зареєструватись</button>
+
+                <a href="../Login/Login.html" class="btn-login">Вхід</a>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="Signup.js" type="module"></script> 
+</body>
+</html>

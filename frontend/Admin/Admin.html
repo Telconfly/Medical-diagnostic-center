@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адмін Панель | МДЦ</title>
+    
+    <link rel="stylesheet" href="../Header/header.css">
+    
+    <link rel="stylesheet" href="../Home/Home.css"> 
+    
+    <link rel="stylesheet" href="/frontend/Admin/Admin.css"> 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            
+            --color-primary: #007bff;
+            --color-secondary: #6c757d; 
+            --color-background: #f4f7f6; 
+            --color-white: #ffffff;
+            --color-text: #212529;
+            --color-text-light: #5a6268; 
+            --color-success: #28a745; 
+            --color-warning: #ffc107;
+            --color-error: #dc3545;
+            --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+            --font-family: 'Roboto', Arial, sans-serif;
+            --border-radius-base: 10px;
+            --padding-base: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-container"></div> 
+
+    <main class="admin-main">
+        <div class="admin-main-wrapper"> 
+            <div class="container admin-container">
+                
+                <header class="admin-page-header">
+                    <h1>Панель Адміністратора</h1>
+                    <p id="auth-status-message" class="info-message">Перевірка доступу...</p>
+                </header>
+
+                <div id="admin-content" style="display: none;">
+                    
+                    <section class="admin-tools">
+                        <h2>⚙️ Інструменти управління</h2>
+                        <div class="tools-grid tab-navigation">
+                            <button class="tool-btn tab-button active" data-action="manage-doctors"><i class="fas fa-user-md"></i> Лікарі</button>
+                            <button class="tool-btn tab-button" data-action="manage-services"><i class="fas fa-notes-medical"></i> Послуги</button>
+                            <button class="tool-btn tab-button" data-action="view-users"><i class="fas fa-users-cog"></i> Користувачі</button>
+
+                        </div>
+                    </section>
+                    
+                    <div id="tool-details-container" class="tool-details-container tab-content-style">
+                    </div>
+                    
+                    <section class="admin-dashboard">
+                        <h2>📊 Огляд та Статистика</h2>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <i class="fas fa-calendar-check" style="color: var(--color-success);"></i>
+                                <h3>Всього записів сьогодні</h3>
+                                <p id="today-appointments-count">...</p>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-users" style="color: var(--color-primary);"></i>
+                                <h3>Всього користувачів</h3>
+                                <p id="total-users-count">...</p>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-stethoscope" style="color: var(--color-warning);"></i>
+                                <h3>Активні послуги</h3>
+                                <p id="active-services-count">...</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="../Header/loadHeader.js"></script> 
+    <script src="/frontend/Home/auth.js"></script>
+    <script type="module" src="adminDoctors.js"></script> 
+    <script type="module" src="adminServices.js"></script> 
+    <script type="module" src="adminUsers.js"></script> 
+    <script type="module" src="admin.js"></script> 
+    
+    <script>
+        function initializeAdminPanel() {
+            if (typeof initAdminPanel !== 'undefined') {
+                initAdminPanel(); 
+            } else {
+                console.error("initAdminPanel не визначена. Переконайтеся, що admin.js завантажено.");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const containerId = 'header-container'; 
+            const headerPath = '../Header/header.html'; 
+            const currentPageTitle = 'Адмін'; 
+
+            if (typeof loadHeader !== 'undefined') {
+                loadHeader(containerId, headerPath, currentPageTitle, initializeAdminPanel); 
+            } else {
+                console.error("loadHeader функція не визначена.");
+            }
+        });
+    </script>
+</body>
+</html>
