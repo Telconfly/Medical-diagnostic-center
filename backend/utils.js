@@ -11,11 +11,11 @@ const timeToMinutes = time => {
 
 function getServiceDuration(idService) {
     return new Promise((resolve, reject) => {
-        
-        db.query("SELECT id_service FROM services WHERE id_service=?", [idService], (err, results) => {
+        db.query('SELECT duration FROM services WHERE id_service = ?', [idService], (err, results) => {
             if (err) return reject(err);
             if (results.length === 0) return resolve(null);
-            resolve(SERVICE_DURATION);
+            // Повертаємо duration з БД, або константу якщо поле порожнє
+            resolve(results[0].duration || SERVICE_DURATION);
         });
     });
 }

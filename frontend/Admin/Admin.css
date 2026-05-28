@@ -1,3 +1,21 @@
+/* ================================================================
+   Admin.css — стилі лише для панелі адміністратора.
+   Глобальні змінні та скидання знаходяться у shared.css.
+   ================================================================ */
+
+/* Перевизначення змінних для адмін-панелі */
+:root {
+    --border-radius-base: 10px;
+    --padding-base: 20px;
+}
+
+/* Кольори іконок статистики */
+.stat-icon-success { color: var(--color-success); }
+.stat-icon-primary { color: var(--color-primary); }
+.stat-icon-warning { color: var(--color-warning); }
+
+/* ---------------------------------------------------------------- */
+
 .admin-main {
     background-color: var(--color-background); 
     padding: 0;

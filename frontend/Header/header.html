@@ -1,31 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-</head>
-<body>
-    <header class="main-header">
+<header class="main-header" role="banner">
     <div class="container nav-bar">
-        <a href="/" class="logo">МДЦ</a>
-        
-        <nav class="nav-links">
+        <a href="../Home/Home.html" class="logo" aria-label="МДЦ — Головна">МДЦ</a>
+
+        <nav class="nav-links" aria-label="Основна навігація">
             <a href="../Home/Home.html" class="nav-item">Головна</a>
             <a href="../Services/Services.html" class="nav-item">Діагностика</a>
             <a href="../Doctors/Doctors.html" class="nav-item" id="doctors-link">Лікарі</a>
         </nav>
-        
+
         <div class="auth-buttons" id="auth-controls">
             <a href="../Signup/Signup.html" class="btn btn-primary-outline btn-equal-width" id="signup-button">Зареєструватись</a>
-            <a href="../Login/Login.html" class="btn btn-primary btn-equal-width" id="login-button">Вхід</a>
-            
-            <a href="/frontend/Admin/Admin.html" class="btn btn-primary btn-equal-width" id="admin-button" style="display: none;">Адмін</a>
-            <a href="../Profile/Profile.html" class="btn btn-profile btn-equal-width" id="profile-button" style="display: none;">Профіль</a>
-            <a href="#" class="btn btn-logout btn-primary-outline btn-equal-width" id="logout-button" style="display: none;">Вихід</a>
+            <a href="../Login/Login.html"   class="btn btn-primary btn-equal-width"         id="login-button">Вхід</a>
+
+            <a href="../Admin/Admin.html"   class="btn btn-primary btn-equal-width"         id="admin-button"   style="display: none;">Адмін</a>
+            <a href="../Profile/Profile.html" class="btn btn-primary btn-equal-width"       id="profile-button" style="display: none;">Профіль</a>
+            <a href="#"                     class="btn btn-logout btn-primary-outline btn-equal-width" id="logout-button"  style="display: none;">Вихід</a>
         </div>
     </div>
 </header>
-</body>
-</html>

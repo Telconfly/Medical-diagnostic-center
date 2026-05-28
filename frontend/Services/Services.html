@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Наші Послуги</title>
-    
-    <link rel="stylesheet" href="../Header/header.css"> 
-    <link rel="stylesheet" href="../Home/Home.css"> 
-    <link rel="stylesheet" href="./Services.css"> 
+    <meta name="description" content="Діагностичні послуги МДЦ — широкий спектр сучасних медичних процедур. Запис онлайн.">
+    <title>Наші Послуги | МДЦ</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Utils/shared.css">
+    <link rel="stylesheet" href="../Header/header.css">
+    <link rel="stylesheet" href="Services.css">
 </head>
 <body>
 
     <div id="header-placeholder"></div>
-    
+
     <main>
-        <section class="page-hero-banner"> 
+        <section class="page-hero-banner">
             <div class="container">
                 <h1>Наші Послуги та Діагностика</h1>
                 <p>Широкий спектр сучасних діагностичних процедур для вашого здоров'я.</p>
             </div>
         </section>
 
-        <section class="services-list-section"> 
+        <section class="services-list-section">
             <div class="container">
-                <div class="search-filter-container" style="margin-bottom: 30px;">
+                <div class="search-filter-container">
                     <p class="search-1">Пошук</p>
-                    <input type="text" id="service-search-input" placeholder="Швидкий пошук послуг за назвою або описом..." style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <input type="text" id="service-search-input" placeholder="Швидкий пошук послуг за назвою або описом...">
                 </div>
                 <div class="services-grid" id="services-container">
                 </div>
@@ -39,43 +40,42 @@
             <p>&copy; 2025 Медичний Діагностичний Центр. Всі права захищені.</p>
         </div>
     </footer>
-    
-    <div id="appointment-modal" class="modal">
+
+    <!-- Модальне вікно запису на послугу -->
+    <div id="appointment-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-service">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Запис на послугу</h2>
-            
-            <form id="service-appointment-form">
-                <p>Ви записуєтеся на: <strong id="modal-service-name" style="color: #007bff;">Назва Послуги</strong></p>
-                
-                <label for="userName">Ваше Ім'я:</label>
-                <input type="text" id="userName" name="userName" required readonly>
+            <span class="close-btn" aria-label="Закрити">&times;</span>
+            <h2 id="modal-title-service">Запис на послугу</h2>
 
-                <label for="userEmail">Ваша Пошта (Email):</label>
-                <input type="email" id="userEmail" name="userEmail" required readonly>
+            <form id="service-appointment-form" novalidate>
+                <p>Ви записуєтеся на: <strong id="modal-service-name">Назва Послуги</strong></p>
 
-                <label for="appointmentDate">Дата:</label>
-                <input type="date" id="appointmentDate" name="appointmentDate" required>
-                
-                <label>Оберіть час:</label>
+                <label for="userName" class="appointment-form-label">Ваше Ім'я:</label>
+                <input type="text" id="userName" name="userName" class="appointment-form-input" required readonly>
+
+                <label for="userEmail" class="appointment-form-label">Ваша Пошта (Email):</label>
+                <input type="email" id="userEmail" name="userEmail" class="appointment-form-input" required readonly>
+
+                <label for="appointmentDate" class="appointment-form-label">Дата:</label>
+                <input type="date" id="appointmentDate" name="appointmentDate" class="appointment-form-input" required>
+
+                <label class="appointment-form-label">Оберіть час:</label>
                 <div id="timeSlotsContainer" class="time-slots-container"></div>
                 <input type="hidden" id="appointmentTime" name="appointmentTime" required>
-                
-                <div id="timeSelectionError" class="message" style="display:none; color: #721c24; background-color: #f8d7da; border-color: #f5c6cb;">Будь ласка, оберіть час.</div>
-                
+
+                <div id="timeSelectionError" class="message" style="display:none; color: #721c24; background-color: #f8d7da;">Будь ласка, оберіть час.</div>
+
                 <button type="submit" id="submitAppointmentBtn">Підтвердити Запис</button>
                 <p id="form-message" class="message"></p>
             </form>
         </div>
     </div>
-    
+
     <script src="../Header/loadHeader.js"></script>
     <script src="../Home/auth.js"></script>
-    
     <script src="./SearchFilter.js"></script>
-    <script src="./Services.js"></script>
+    <script type="module" src="./Services.js"></script>
     <script>
-
         loadHeader('header-placeholder', '../Header/header.html', 'Діагностика');
     </script>
 </body>

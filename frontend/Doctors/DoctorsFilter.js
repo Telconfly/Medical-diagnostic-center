@@ -2,7 +2,7 @@ const specializationFilter = document.getElementById('specialization-filter');
 const searchInput = document.getElementById('doctor-search-input');
 
 let allDoctors = [];
-let displayDoctorsCallback = () => console.error("displayDoctors function not provided.");
+let displayDoctorsCallback = () => {};
 
 
 function populateSpecializationFilter(doctors) {

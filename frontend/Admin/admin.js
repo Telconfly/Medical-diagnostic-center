@@ -22,7 +22,7 @@ function isAdmin() {
 
     try {
         if (typeof window.decodeJwt !== 'function') {
-            console.error("[AdminCheck] Функція window.decodeJwt не визначена. Перевірте auth.js.");
+            console.error('Функція decodeJwt не визначена. Перевірте підключення auth.js.');
             return false;
         }
 
@@ -31,7 +31,7 @@ function isAdmin() {
         
         return isUserAdmin;
     } catch (e) {
-        console.error("[AdminCheck] Помилка декодування токена:", e);
+        console.error('Помилка декодування токена:', e);
         return false;
     }
 }
@@ -66,7 +66,7 @@ async function fetchAdminStats() {
         }
 
     } catch (error) {
-        console.error("[Stats] Помилка при завантаженні статистики:", error);
+        console.error('Помилка при завантаженні статистики:', error);
         throw error;
     }
 }

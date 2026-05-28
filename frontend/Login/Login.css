@@ -1,72 +1,7 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #ffffff; 
-}
+/* ================================================================
+   Login.css — специфічні стилі для сторінки входу.
+   Спільні стилі форми знаходяться у Utils/auth-form.css.
+   Глобальні змінні та скидання — у Utils/shared.css.
+   ================================================================ */
 
-.center-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.login-card {
-    background: rgb(255, 255, 255);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    width: 300px;
-}
-
-.title {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 8px 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-}
-
-.error {
-    color: red;
-    font-size: 0.85rem;
-}
-
-.btn-submit {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-
-.btn-submit:hover {
-    background-color: #1359a4;
-}
-
-.btn-link {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    color: #333;
-}
-
-.btn-link:hover {
-    background-color: #f1f1f1;
-}
+/* Порожній файл — всі стилі перенесено до auth-form.css та shared.css */

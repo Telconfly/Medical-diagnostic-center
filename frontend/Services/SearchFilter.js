@@ -38,7 +38,5 @@ function initializeSearchFilter(searchInput, allServices, displayServicesCallbac
             event.preventDefault(); 
         }
     });
-    
-    console.log('Пошуковий фільтр успішно ініціалізовано.');
 }
 window.initializeSearchFilter = initializeSearchFilter;

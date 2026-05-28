@@ -1,71 +1,71 @@
 window.initPasswordUpdate = () => {
-    const apiUrl = window.apiUrl;
-    const token = window.token;
-    
+    const apiUrl  = window.apiUrl;
+    const token   = window.token;
+
     const passwordForm = document.getElementById('password-form');
-    
+
     if (!passwordForm) {
-        console.error("Password form element not found with ID 'password-form'.");
+        console.error("Елемент форми 'password-form' не знайдено.");
         return;
     }
 
     const handlePasswordUpdate = async (e) => {
         e.preventDefault();
 
-        const oldPassword = document.getElementById('currentPassword').value;
-        const newPassword = document.getElementById('newPassword').value;
+        const oldPassword        = document.getElementById('currentPassword').value;
+        const newPassword        = document.getElementById('newPassword').value;
         const confirmNewPassword = document.getElementById('confirmNewPassword').value;
 
         if (newPassword !== confirmNewPassword) {
-            window.displayMessage("Новий пароль та підтвердження не збігаються.", false);
+            window.displayMessage('Новий пароль та підтвердження не збігаються.', false);
             return;
         }
 
         if (newPassword.length < 6) {
-             window.displayMessage("Новий пароль має бути принаймні 6 символів.", false);
-             return;
+            window.displayMessage('Новий пароль має бути принаймні 6 символів.', false);
+            return;
         }
 
         try {
-            const response = await fetch(`${apiUrl}/auth/update-password`, { 
+            const response = await fetch(`${apiUrl}/auth/update-password`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json'
+                    'Content-Type':  'application/json',
                 },
-                body: JSON.stringify({
-                    oldPassword: oldPassword,
-                    newPassword: newPassword
-                })
+                body: JSON.stringify({ oldPassword, newPassword }),
             });
-            
-            let data;
-            
+
+            // Зчитуємо тіло відповіді ОДИН раз
+            let responseText;
             try {
-                const responseText = await response.text();
+                responseText = await response.text();
+            } catch {
+                window.displayMessage('Помилка зчитування відповіді сервера.', false);
+                return;
+            }
+
+            let data;
+            try {
                 data = JSON.parse(responseText);
-            } catch (jsonError) {
-                const responseText = await response.text();
-                console.error("Помилка JSON.parse. Сервер повернув HTTP-статус:", response.status, ", Тіло:", responseText); 
+            } catch {
+                console.error('Сервер повернув некоректний JSON. HTTP-статус:', response.status, ', Тіло:', responseText);
                 window.displayMessage(`Критична помилка сервера (${response.status}). Некоректна відповідь.`, false);
-                return; 
+                return;
             }
 
             if (response.ok && data.Success) {
-                window.displayMessage(data.Message || "Пароль успішно оновлено! Необхідний повторний вхід.", true);
-                
-                passwordForm.reset(); 
-                
+                window.displayMessage(data.Message || 'Пароль успішно оновлено! Необхідний повторний вхід.', true);
+                passwordForm.reset();
             } else {
                 window.displayMessage(data.Error || `Помилка оновлення пароля: ${data.Message || 'Невідома помилка.'}`, false);
             }
         } catch (error) {
-            console.error('Error updating password:', error);
-            window.displayMessage("Помилка підключення до сервера під час оновлення пароля.", false);
+            console.error('Помилка підключення під час оновлення пароля:', error);
+            window.displayMessage('Помилка підключення до сервера під час оновлення пароля.', false);
         }
     };
 
     passwordForm.addEventListener('submit', handlePasswordUpdate);
-
-    window.handlePasswordUpdate = handlePasswordUpdate; 
+    window.handlePasswordUpdate = handlePasswordUpdate;
 };

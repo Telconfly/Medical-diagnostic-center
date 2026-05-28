@@ -3,45 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Реєстрація</title>
+    <meta name="description" content="Реєстрація нового облікового запису у Медичному Діагностичному Центрі.">
+    <title>Реєстрація | МДЦ</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Utils/shared.css">
+    <link rel="stylesheet" href="../Utils/auth-form.css">
     <link rel="stylesheet" href="Signup.css">
 </head>
-
-<body class="bg-primary">
+<body>
 
     <div class="center-container">
-        <div class="signup-card">
-
-            <form id="signup-form">
-
-                <h2 class="title">Реєстрація</h2>
+        <div class="auth-card">
+            <form id="signup-form" novalidate>
+                <h1 class="form-title">Реєстрація</h1>
 
                 <div class="form-group">
-                    <label for="name"><strong>П.І.Б.</strong></label>
-                    <input type="text" id="name" name="name" placeholder="Введіть Ім'я">
-                    <span id="name-error" class="error"></span>
+                    <label for="name">П.І.Б.</label>
+                    <input type="text" id="name" name="name" placeholder="Введіть Ім'я" autocomplete="name">
+                    <span id="name-error" class="field-error" role="alert"></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="email"><strong>Email</strong></label>
-                    <input type="email" id="email" name="email" placeholder="Введіть Email">
-                    <span id="email-error" class="error"></span>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Введіть Email" autocomplete="email">
+                    <span id="email-error" class="field-error" role="alert"></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="password"><strong>Пароль</strong></label>
-                    <input type="password" id="password" name="password" placeholder="Введіть Пароль">
-                    <span id="password-error" class="error"></span>
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" name="password" placeholder="Введіть Пароль" autocomplete="new-password">
+                    <span id="password-error" class="field-error" role="alert"></span>
                 </div>
 
                 <button type="submit" class="btn-submit">Зареєструватись</button>
-
-                <a href="../Login/Login.html" class="btn-login">Вхід</a>
+                <a href="../Login/Login.html" class="btn-link">Вхід</a>
             </form>
-
         </div>
     </div>
 
-    <script src="Signup.js" type="module"></script> 
+    <script src="Signup.js" type="module"></script>
 </body>
 </html>

@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Медичний Діагностичний Центр - Наші Лікарі</title>
-    
-    <link rel="stylesheet" href="../Header/header.css"> 
-    
-        <link rel="stylesheet" href="../Home/Home.css"> 
-    
-        <link rel="stylesheet" href="Doctors.css">
+    <meta name="description" content="Кваліфіковані лікарі МДЦ — знайдіть фахівця та запишіться на консультацію онлайн.">
+    <title>Наші Лікарі | МДЦ</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../Utils/shared.css">
+    <link rel="stylesheet" href="../Header/header.css">
+    <link rel="stylesheet" href="Doctors.css">
 </head>
 <body>
 
     <div id="header-placeholder"></div>
-    
+
     <main>
         <section class="page-hero-banner">
             <div class="container">
@@ -23,15 +22,14 @@
                 <p>Оберіть фахівця, який допоможе вам на шляху до здоров'я.</p>
             </div>
         </section>
-        
+
         <section class="filter-controls-section">
             <div class="container filter-controls">
-                
                 <div class="filter-group">
                     <label for="specialization-filter">Спеціальність:</label>
                     <select id="specialization-filter" class="control-input">
                         <option value="">Всі спеціальності</option>
-                        </select>
+                    </select>
                 </div>
 
                 <div class="filter-group search-group">
@@ -40,7 +38,7 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="doctors-list-section">
             <div class="container doctors-grid" id="doctors-container">
             </div>
@@ -52,41 +50,41 @@
             <p>&copy; 2025 Медичний Діагностичний Центр. Всі права захищені.</p>
         </div>
     </footer>
-    
-    <div id="appointment-modal" class="modal">
+
+    <!-- Модальне вікно запису на прийом -->
+    <div id="appointment-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-doctor">
         <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Запис на прийом</h2>
-            <form id="appointment-form">
+            <span class="close-btn" aria-label="Закрити">&times;</span>
+            <h2 id="modal-title-doctor">Запис на прийом</h2>
+            <form id="appointment-form" novalidate>
                 <p>Ви записуєтеся до лікаря: <strong id="modal-doctor-name"></strong></p>
-                
-                <label for="userName">Ваше Ім'я:</label>
-                <input type="text" id="userName" name="userName" required readonly>
 
-                <label for="userEmail">Ваша Пошта (Email):</label>
-                <input type="email" id="userEmail" name="userEmail" required readonly>
+                <label for="userName" class="appointment-form-label">Ваше Ім'я:</label>
+                <input type="text" id="userName" name="userName" class="appointment-form-input" required readonly>
 
-                <label for="appointmentDate">Дата:</label>
-                <input type="date" id="appointmentDate" name="appointmentDate" required>
-                
-                <label>Час:</label>
-                <div id="timeSlotsContainer" class="time-slots-container">
-                </div>
+                <label for="userEmail" class="appointment-form-label">Ваша Пошта (Email):</label>
+                <input type="email" id="userEmail" name="userEmail" class="appointment-form-input" required readonly>
+
+                <label for="appointmentDate" class="appointment-form-label">Дата:</label>
+                <input type="date" id="appointmentDate" name="appointmentDate" class="appointment-form-input" required>
+
+                <label class="appointment-form-label">Час:</label>
+                <div id="timeSlotsContainer" class="time-slots-container"></div>
                 <input type="hidden" id="appointmentTime" name="appointmentTime" required>
-                
-                <div id="timeSelectionError" class="message" style="display:none; color: red;">Будь ласка, оберіть час.</div>
+
+                <div id="timeSelectionError" class="message" style="display:none; color: #721c24; background-color: #f8d7da;">Будь ласка, оберіть час.</div>
                 <button type="submit" id="submitAppointmentBtn">Підтвердити Запис</button>
                 <p id="form-message" class="message"></p>
             </form>
         </div>
     </div>
-    
-    <script src="../Header/loadHeader.js"></script> 
-    <script src="../Home/auth.js"></script> 
-    
-    <script type="module" src="DoctorsFilter.js"></script>
-    <script type="module" src="AppointmentDoctor.js"></script>     <script type="module" src="Doctors.js"></script>     <script>
 
+    <script src="../Header/loadHeader.js"></script>
+    <script src="../Home/auth.js"></script>
+    <script type="module" src="DoctorsFilter.js"></script>
+    <script type="module" src="AppointmentDoctor.js"></script>
+    <script type="module" src="Doctors.js"></script>
+    <script>
         loadHeader('header-placeholder', '../Header/header.html', 'Лікарі');
     </script>
 </body>

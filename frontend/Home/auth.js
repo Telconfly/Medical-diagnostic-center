@@ -1,28 +1,39 @@
+/**
+ * Модуль автентифікації.
+ * Надає функції декодування JWT, перевірки валідності токена
+ * та ініціалізації UI заголовка залежно від стану авторизації.
+ */
+
+/**
+ * Декодує payload JWT-токена без верифікації підпису.
+ * @param {string} token
+ * @returns {object|null}
+ */
 const decodeJwt = (token) => {
     try {
         const payloadBase64 = token.split('.')[1];
-        const decodedPayload = atob(payloadBase64);
-        return JSON.parse(decodedPayload);
+        return JSON.parse(atob(payloadBase64));
     } catch (e) {
-        console.error("AUTH.JS [ERROR]: Помилка декодування JWT.", e);
+        console.error('Помилка декодування JWT:', e);
         return null;
     }
 };
 
+/**
+ * Перевіряє, чи токен є валідним та не прострочений.
+ * При простроченні видаляє токен з localStorage.
+ * @param {string|null} token
+ * @returns {boolean}
+ */
 const isTokenValid = (token) => {
     if (!token) return false;
 
     const payload = decodeJwt(token);
-    if (!payload || !payload.exp) {
-        console.warn("AUTH.JS [WARN]: Payload токена не містить 'exp' (термін дії). Вважаємо невалідним.");
-        return false;
-    }
+    if (!payload || !payload.exp) return false;
 
-    const currentTime = Math.floor(Date.now() / 1000); 
-    
+    const currentTime = Math.floor(Date.now() / 1000);
     if (payload.exp < currentTime) {
-        console.warn("AUTH.JS [WARN]: Токен ПРОСТРОЧЕНО. Видаляємо його з localStorage.");
-        localStorage.removeItem('token'); 
+        localStorage.removeItem('token');
         return false;
     }
 
@@ -30,68 +41,49 @@ const isTokenValid = (token) => {
 };
 
 window.isTokenValid = isTokenValid;
-window.decodeJwt = decodeJwt; 
+window.decodeJwt    = decodeJwt;
 
+/**
+ * Ініціалізує UI заголовка відповідно до стану авторизації.
+ * Викликається з loadHeader.js після вставки хедера у DOM.
+ */
 window.initAuthUI = () => {
-    console.log("=================================================");
-    console.log("AUTH.JS: Скрипт ініціалізовано після завантаження ХЕДЕРУ.");
-    
-    const token = localStorage.getItem('token');
-    const tokenIsValid = isTokenValid(token); 
-    
-    const loginButton = document.getElementById('login-button');
-    const signupButton = document.getElementById('signup-button');
+    const token        = localStorage.getItem('token');
+    const tokenIsValid = isTokenValid(token);
+
+    const loginButton   = document.getElementById('login-button');
+    const signupButton  = document.getElementById('signup-button');
     const profileButton = document.getElementById('profile-button');
-    const logoutButton = document.getElementById('logout-button');
-    const adminButton = document.getElementById('admin-button'); 
+    const logoutButton  = document.getElementById('logout-button');
+    const adminButton   = document.getElementById('admin-button');
 
-    const updateUI = () => {
-        if (tokenIsValid) {
-            console.log("AUTH.JS [UI]: Встановлено режим 'УВІЙШОВ'.");
-            
-            if (loginButton) loginButton.style.display = 'none';
-            if (signupButton) signupButton.style.display = 'none';
-            if (profileButton) profileButton.style.display = 'block'; 
-            if (logoutButton) logoutButton.style.display = 'block'; 
-            
-            const payload = decodeJwt(token);
-            const userRole = payload ? payload.role : 'User'; 
-            
-            console.log(`AUTH.JS [ROLE]: Виявлена роль користувача: ${userRole}`);
+    if (tokenIsValid) {
+        if (loginButton)   loginButton.style.display   = 'none';
+        if (signupButton)  signupButton.style.display  = 'none';
+        if (profileButton) profileButton.style.display = 'block';
+        if (logoutButton)  logoutButton.style.display  = 'block';
 
-            if (adminButton) {
-                if (userRole === 'Admin') {
-                    adminButton.style.display = 'block';
-                    console.log("AUTH.JS [ROLE]: Кнопка 'Адмін' відображена.");
-                } else {
-                    adminButton.style.display = 'none';
-                    console.log("AUTH.JS [ROLE]: Кнопка 'Адмін' прихована (користувач не Адмін).");
-                }
-            }
+        const payload  = decodeJwt(token);
+        const userRole = payload ? payload.role : 'User';
 
-        } else {
-            console.log("AUTH.JS [UI]: Встановлено режим 'ВИЙШОВ'.");
-            
-            if (loginButton) loginButton.style.display = 'block';     
-            if (signupButton) signupButton.style.display = 'block';   
-            if (profileButton) profileButton.style.display = 'none';
-            if (logoutButton) logoutButton.style.display = 'none';
-            if (adminButton) adminButton.style.display = 'none'; 
+        if (adminButton) {
+            adminButton.style.display = userRole === 'Admin' ? 'block' : 'none';
         }
-        console.log("=================================================");
-    };
+    } else {
+        if (loginButton)   loginButton.style.display   = 'block';
+        if (signupButton)  signupButton.style.display  = 'block';
+        if (profileButton) profileButton.style.display = 'none';
+        if (logoutButton)  logoutButton.style.display  = 'none';
+        if (adminButton)   adminButton.style.display   = 'none';
+    }
 
-    const handleLogout = (e) => { 
-        e.preventDefault(); 
-        console.log("AUTH.JS [LOGOUT]: Запуск процедури виходу.");
+    const handleLogout = (e) => {
+        e.preventDefault();
         localStorage.removeItem('token');
-        alert("Ви успішно вийшли з облікового запису.");
-        window.location.href = "../Home/Home.html";
+        window.location.href = '../Home/Home.html';
     };
 
     if (logoutButton) {
-        logoutButton.addEventListener('click', handleLogout); 
+        logoutButton.addEventListener('click', handleLogout);
     }
-
-    updateUI();
 };

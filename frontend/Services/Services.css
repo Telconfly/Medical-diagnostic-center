@@ -1,54 +1,51 @@
-:root {
-    --color-primary: #007bff;
-    --color-light-blue: #e0f0ff;
-    --color-text: #343a40;
-    --color-white: #ffffff;
-    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+/* Services.css — services page styles only */
+/* CSS classes renamed from .doctor-* to .service-* for semantic correctness */
+
+/* search input */
+.search-filter-container {
+    margin-bottom: 30px;
 }
 
-body {
-    margin: 0;
-    font-family: 'Roboto', Arial, sans-serif; 
-    line-height: 1.6;
-    color: var(--color-text);
-    background-color: #f8f9fa;
-}
-
-a { text-decoration: none; color: inherit; }
-
-.page-hero-banner {
-    background-color: var(--color-light-blue);
-    padding: 40px 0;
-    text-align: center;
-}
-
-.page-hero-banner h1 {
-    font-size: 2.5rem; 
-    color: var(--color-primary);
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.page-hero-banner p {
+.search-1 {
+    font-weight: 500;
     font-size: 1.1rem;
-    color: var(--color-text);
-    margin-bottom: 0;
+    margin-bottom: 8px;
+    display: block;
 }
 
+#service-search-input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ced4da;
+    border-radius: var(--border-radius-base);
+    font-size: 0.95rem;
+    font-family: var(--font-family-base);
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+#service-search-input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* services grid */
 .services-list-section {
     padding: 60px 20px;
     background-color: var(--color-white);
 }
 
 .services-grid {
-    display: grid; 
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    max-width: 1100px; 
-    margin: 0 auto;    
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
-.doctor-card {
+/* service card */
+.service-card {
     background-color: var(--color-white);
     border-radius: 12px;
     box-shadow: var(--shadow-light);
@@ -56,48 +53,61 @@ a { text-decoration: none; color: inherit; }
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 }
 
-.doctor-card:hover {
+.service-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 123, 255, 0.15);
 }
 
-.doctor-image-container {
+.service-image-container {
     height: 200px;
     overflow: hidden;
-    background-color: #dee2e6;
+    background-color: var(--color-light-blue);
 }
 
-.doctor-image {
+.service-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
-.doctor-info {
+/* shown when no image URL is provided */
+.service-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-light-blue) 0%, #b3d7ff 100%);
+}
+
+.service-info {
     padding: 20px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.doctor-name {
+.service-name {
     color: var(--color-primary);
     font-size: 1.5rem;
     margin-top: 0;
     margin-bottom: 5px;
 }
 
-.doctor-specialization {
-    color: #6c757d;
+/* highlights selected service name in the modal */
+#modal-service-name {
+    color: var(--color-primary);
+}
+
+.service-category {
+    color: var(--color-text-muted);
     font-size: 0.95rem;
     margin-bottom: 10px;
     font-weight: 500;
 }
 
-.doctor-description {
+.service-description {
     font-size: 0.95rem;
     line-height: 1.6;
     color: #495057;
@@ -105,7 +115,7 @@ a { text-decoration: none; color: inherit; }
     flex-grow: 1;
 }
 
-.doctor-footer {
+.service-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -114,196 +124,7 @@ a { text-decoration: none; color: inherit; }
     margin-top: auto;
 }
 
-.doctor-price strong {
+.service-price strong {
     font-size: 1.2rem;
-    color: #007bff; 
-}
-
-.appointment-btn {
-    background-color: #ffffff;
-    color: var(--color-text);
-    border: 2px solid var(--color-primary);
-    padding: 8px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.appointment-btn:hover {
-    background-color: #e2e6ea;
-    border-color: #0056b3;
-}
-
-.main-footer {
-    background-color: #343a40;
-    color: #fff;
-    text-align: center;
-    padding: 15px 0;
-    margin-top: 40px;
-}
-
-.modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1000; 
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 10% auto; 
-    padding: 30px;
-    border: 1px solid #888;
-    width: 90%; 
-    max-width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    position: relative;
-}
-
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    line-height: 1;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal-content h2 {
-    margin-top: 0;
     color: var(--color-primary);
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-}
-
-#service-appointment-form label {
-    display: block;
-    margin-top: 15px;
-    font-weight: 500;
-    color: var(--color-text);
-}
-
-#service-appointment-form input[type="text"],
-#service-appointment-form input[type="email"],
-#service-appointment-form input[type="date"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    box-sizing: border-box;
-    border: 1px solid #ced4da; 
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-#service-appointment-form input:read-only {
-    background-color: #e9ecef;
-    color: #6c757d;
-}
-
-.time-slots-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; 
-    gap: 10px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ced4da; 
-    border-radius: 8px;
-    background-color: #f8f9fa; 
-}
-
-.time-slot-btn {
-    background-color: #e9ecef;
-    color: var(--color-text);
-    border: 1px solid #ced4da;
-    padding: 8px 12px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.9em;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    flex-grow: 0; 
-    flex-basis: auto; 
-    min-width: 80px; 
-    text-align: center;
-}
-
-.time-slot-btn:hover:not(.selected):not(:disabled) {
-    background-color: #dee2e6;
-    border-color: #adb5bd;
-}
-
-.time-slot-btn.selected {
-    background-color: var(--color-primary);
-    color: white;
-    border-color: #0056b3;
-    font-weight: bold;
-    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
-}
-
-.time-slot-btn:disabled {
-    background-color: #f8d7da;
-    color: #721c24; 
-    border-color: #f5c6cb;
-    cursor: not-allowed;
-    text-decoration: line-through; 
-    opacity: 0.7;
-    pointer-events: none; 
-}
-
-#submitAppointmentBtn {
-    width: 100%;
-    margin-top: 20px;
-    background-color: #007bff;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.1em;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-#submitAppointmentBtn:hover:not(:disabled) {
-    background-color: #0864c7;
-}
-
-#submitAppointmentBtn:disabled {
-    background-color: #6c757d;
-    cursor: wait;
-}
-
-.message {
-    margin-top: 15px;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.search-1 {
-    font-family: 'Roboto', Arial, sans-serif;
-    font-weight: 500;
-    font-size: 18px;
-}
-
-#service-search-input {
-    font-family: 'Roboto', Arial, sans-serif;
-    margin-bottom: 10px;
-    font-size: 15px;
 }

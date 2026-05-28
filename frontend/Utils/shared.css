@@ -1,0 +1,352 @@
+/* shared.css — global styles, loaded first on all pages */
+
+/* variables */
+:root {
+    --color-primary:       #007bff;
+    --color-primary-dark:  #0056b3;
+    --color-light-blue:    #e0f0ff;
+    --color-text:          #343a40;
+    --color-text-muted:    #6c757d;
+    --color-text-light:    #6c757d;
+    --color-white:         #ffffff;
+    --color-dark:          #212529;
+    --color-background:    #f8f9fa;
+    --color-success:       #28a745;
+    --color-warning:       #ffc107;
+    --color-error:         #dc3545;
+    --shadow-light:        0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-medium:       0 8px 25px rgba(0, 0, 0, 0.1);
+    --border-radius-base:  8px;
+    --font-family-base:    'Roboto', Arial, sans-serif;
+    --font-family:         'Roboto', Arial, sans-serif;
+    --padding-base:        20px;
+}
+
+/* base reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* layout */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    border-radius: var(--border-radius-base);
+    font-weight: 500;
+    font-family: var(--font-family-base);
+    font-size: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn-equal-width {
+    min-width: 120px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.btn-large {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    min-width: 200px;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary-outline {
+    background-color: transparent;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.btn-primary-outline:hover {
+    background-color: var(--color-light-blue);
+    color: var(--color-primary);
+}
+
+.btn-secondary-outline {
+    background-color: transparent;
+    border-color: var(--color-text-muted);
+    color: var(--color-text-muted);
+    margin-top: 20px;
+}
+
+.btn-secondary-outline:hover {
+    background-color: #f1f1f1;
+}
+
+/* book appointment button */
+.appointment-btn {
+    background-color: var(--color-white);
+    color: var(--color-text);
+    border: 2px solid var(--color-primary);
+    padding: 10px 20px;
+    border-radius: var(--border-radius-base);
+    cursor: pointer;
+    font-weight: 500;
+    font-family: var(--font-family-base);
+    transition: all 0.3s ease;
+}
+
+.appointment-btn:hover {
+    background-color: var(--color-light-blue);
+    border-color: var(--color-primary-dark);
+    color: var(--color-primary);
+}
+
+/* hero banner for inner pages */
+.page-hero-banner {
+    background-color: var(--color-light-blue);
+    padding: 40px 0;
+    text-align: center;
+}
+
+.page-hero-banner h1 {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.page-hero-banner p {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 0;
+}
+
+/* footer */
+.main-footer {
+    background-color: var(--color-dark);
+    color: #f8f9fa;
+    text-align: center;
+    padding: 25px 0;
+}
+
+/* utilities */
+.text-center {
+    text-align: center;
+}
+
+/* messages */
+.info-message {
+    text-align: center;
+    padding: 20px;
+    border-radius: var(--border-radius-base);
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: var(--color-text-muted);
+}
+
+.error-message {
+    text-align: center;
+    padding: 20px;
+    border-radius: var(--border-radius-base);
+    margin-top: 20px;
+    font-size: 1.1em;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    width: 100%;
+}
+
+/* modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #e0e0e0;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: var(--color-primary);
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+}
+
+/* appointment form fields inside modal */
+.appointment-form-label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.appointment-form-input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: var(--font-family-base);
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.appointment-form-input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.appointment-form-input:read-only {
+    background-color: #e9ecef;
+    color: var(--color-text-muted);
+}
+
+/* time slots */
+.time-slots-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: var(--border-radius-base);
+    background-color: var(--color-background);
+}
+
+.time-slot-btn {
+    background-color: #e9ecef;
+    color: var(--color-text);
+    border: 1px solid #ced4da;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    font-family: var(--font-family-base);
+    transition: all 0.2s ease;
+    min-width: 80px;
+    text-align: center;
+}
+
+.time-slot-btn:hover:not(.selected):not(:disabled) {
+    background-color: #dee2e6;
+    border-color: #adb5bd;
+}
+
+.time-slot-btn.selected {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary-dark);
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.4);
+}
+
+.time-slot-btn:disabled {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+    cursor: not-allowed;
+    text-decoration: line-through;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* submit button for booking */
+#submitAppointmentBtn {
+    width: 100%;
+    margin-top: 20px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: var(--font-family-base);
+    transition: background-color 0.3s;
+}
+
+#submitAppointmentBtn:hover:not(:disabled) {
+    background-color: var(--color-primary-dark);
+}
+
+#submitAppointmentBtn:disabled {
+    background-color: var(--color-text-muted);
+    cursor: wait;
+}
+
+/* inline form status message */
+.message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+@media (max-width: 500px) {
+    .time-slot-btn {
+        flex-basis: calc(50% - 10px);
+        min-width: unset;
+    }
+}

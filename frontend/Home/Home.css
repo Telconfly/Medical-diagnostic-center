@@ -1,75 +1,8 @@
-body {
-    margin: 0;
-    font-family: 'Roboto', Arial, sans-serif; 
-    line-height: 1.6;
-    color: #343a40; 
-    background-color: #f8f9fa; 
-}
+/* Home.css — homepage-only styles */
 
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-
-:root {
-    --color-primary: #007bff; 
-    --color-light-blue: #e0f0ff; 
-    --color-text: #343a40;
-    --color-white: #ffffff;
-    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05); 
-    --color-dark: #212529; 
-    --color-success: #28a745; 
-}
-
-.btn {
-    display: inline-block;
-    padding: 10px 15px; 
-    border-radius: 8px; 
-    font-weight: 500;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    border: 2px solid transparent; 
-}
-
-.btn-primary {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border-color: var(--color-primary); 
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
-}
-
-.btn-secondary-outline {
-    background-color: transparent;
-    border-color: #6c757d;
-    color: #6c757d;
-    margin-top: 20px;
-}
-.btn-secondary-outline:hover {
-    background-color: #f1f1f1;
-}
-
-.btn-large {
-    padding: 12px 25px;
-    font-size: 1.1rem;
-    min-width: 200px; 
-}
-
-
+/* hero section */
 .hero-banner {
-    background-color: var(--color-light-blue); 
+    background-color: var(--color-light-blue);
     padding: 80px 0;
 }
 
@@ -84,6 +17,20 @@ a {
     max-width: 50%;
 }
 
+.hero-text-block h1 {
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+.hero-text-block p {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    margin-bottom: 30px;
+}
+
 .hero-image-placeholder {
     max-width: 35%;
 }
@@ -96,14 +43,15 @@ a {
     object-fit: cover;
 }
 
-
-
+/* about section */
 .about-us {
     padding: 60px 20px;
     background-color: var(--color-white);
 }
 
-.about-us h2, .services-preview h2, .why-choose-us h2 {
+.about-us h2,
+.services-preview h2,
+.why-choose-us h2 {
     text-align: center;
     font-size: 2rem;
     color: var(--color-primary);
@@ -126,7 +74,6 @@ a {
     margin-bottom: 15px;
 }
 
-
 .stats-cards-grid {
     flex: 1 1 300px;
     display: flex;
@@ -146,19 +93,19 @@ a {
 .stat-card h3 {
     font-size: 2rem;
     color: var(--color-primary);
-    margin: 0 0 5px 0;
+    margin: 0 0 5px;
 }
 
 .stat-card p {
     font-size: 0.9rem;
-    color: #6c757d;
+    color: var(--color-text-muted);
     margin: 0;
 }
 
-
+/* advantages section */
 .why-choose-us {
     padding: 60px 20px;
-    background-color: var(--color-white);
+    background-color: #f1f5fa;
 }
 
 .advantage-grid {
@@ -200,11 +147,10 @@ a {
     color: #555;
 }
 
-
-
+/* services preview */
 .services-preview {
     padding: 60px 20px;
-    background-color: #f1f5fa; 
+    background-color: var(--color-background);
 }
 
 .card-grid {
@@ -214,13 +160,14 @@ a {
     margin-bottom: 40px;
 }
 
+/* service preview card on homepage */
 .service-card {
     background-color: var(--color-white);
     padding: 30px;
     border-radius: 12px;
     box-shadow: var(--shadow-light);
     transition: transform 0.3s;
-    text-align: center; 
+    text-align: center;
 }
 
 .service-card:hover {
@@ -232,7 +179,6 @@ a {
     font-size: 2.5rem;
     display: block;
     margin-bottom: 15px;
-    color: var(--color-primary);
 }
 
 .service-card h3 {
@@ -244,7 +190,7 @@ a {
 
 .service-card p {
     font-size: 0.95rem;
-    color: #6c757d;
+    color: var(--color-text-muted);
     margin-bottom: 15px;
 }
 
@@ -257,17 +203,13 @@ a {
 }
 
 .service-link:hover {
-    color: #0056b3;
+    color: var(--color-primary-dark);
 }
 
-.text-center {
-    text-align: center;
-}
-
-
+/* call to action banner */
 .cta-banner {
     padding: 80px 20px;
-    background: var(--color-primary); 
+    background: var(--color-primary);
     color: var(--color-white);
     text-align: center;
 }
@@ -286,6 +228,7 @@ a {
     margin-right: auto;
 }
 
+/* inverted button for the blue background */
 .cta-banner .btn-primary {
     background-color: var(--color-white);
     color: var(--color-primary);
@@ -294,19 +237,9 @@ a {
 
 .cta-banner .btn-primary:hover {
     background-color: #f1f1f1;
-    color: #0056b3;
+    color: var(--color-primary-dark);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-
-
-
-.main-footer {
-    background-color: var(--color-dark); 
-    color: #f8f9fa;
-    text-align: center;
-    padding: 25px 0;
-}
-
 
 @media (max-width: 992px) {
     .hero-content {
@@ -314,7 +247,8 @@ a {
         text-align: center;
     }
 
-    .hero-text-block, .hero-image-placeholder {
+    .hero-text-block,
+    .hero-image-placeholder {
         max-width: 100%;
     }
 
@@ -333,27 +267,25 @@ a {
         flex-wrap: wrap;
         justify-content: center;
     }
+
     .stat-card {
         flex: 1 1 45%;
     }
 
-    .hero-banner h1 {
-        font-size: 2.2rem; 
+    .hero-text-block h1 {
+        font-size: 2.2rem;
     }
-    .hero-banner p {
-        font-size: 1rem;
-    }
-    
+
     .advantage-grid {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 576px) {
-      .stat-card {
-        flex: 1 1 100%; 
+    .stat-card {
+        flex: 1 1 100%;
     }
-    
+
     .cta-banner h2 {
         font-size: 1.8rem;
     }
